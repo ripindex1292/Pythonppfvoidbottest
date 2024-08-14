@@ -1,5 +1,5 @@
 # Void-Bot-PPF-Discord
-![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)]
 
 ## Pasos para correr el script:
 1. Instalar Python
@@ -21,5 +21,5 @@ En Windows se necesitaría lo siguiente:
 3. Instalar main.py y data.json de este repositorio, y asignarlo en una carpeta dedicada.
 ![directorio](https://raw.githubusercontent.com/ripiner/Void-bot-PPF-discord/main/media/directorio.png)
 4. Click derecho y "Abrir en terminal"
-![Click](https://raw.githubusercontent.com/ripiner/Void-bot-PPF-discord/main/media/click.png)
+![Click](/media/click.png)
 5. Seguir los pasos para correr el script ↖️
