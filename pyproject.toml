@@ -1,8 +1,0 @@
-[project]
-name = "ppf-void-bot"
-version = "0.1.5"
-dependencies = [
-    "dhooks-lite",
-    "websocket-client",
-]
-requires-python = ">=3.7"
