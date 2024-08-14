@@ -11,7 +11,7 @@
 ## Considerar lo siguiente
 - Introducir datos en `data.json` ➡ `role: ID de rol` y `URL: link de websocket`
 
-# Ejecutando en distintos entornos
+## Ejecutando en distintos entornos
 - Es recomendable correr en un entorno Linux, ideal un servidor dedicado o sitio web que permita hostear el servidor
 - Termux (Android) es muy recomendable, corre de fondo donde quiera que vayas, sin necesidad de mantener la PC encendida
 
