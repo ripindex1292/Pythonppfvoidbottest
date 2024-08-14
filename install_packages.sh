@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get the directory where the script is located
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Check if pip is installed
 if ! command -v pip &> /dev/null
 then
@@ -8,4 +11,4 @@ then
 fi
 
 # Install dhooks-lite and websocket-client
-pip install dhooks-lite websocket-client
+pip install --target "$script_dir" dhooks-lite websocket-client
