@@ -31,16 +31,19 @@ def on_message(ws, message):
                     i[0].send('Celebration time over.')
 
             if msg[2] == 'xx' and 'Threat couldn\'t be contained' in msg[1]:
-                print("Threat couldn't be contained. Immediate action required.")
+                print("Threat couldn't be contained.")
                 for i in web_hook:
-                    i[0].send('Threat couldn\'t be contained. Immediate action required!')
+                    i[0].send('Threat couldn\'t be contained.')
                 # Sleep for 26 minutes (60 seconds * 26 minutes)
                 time.sleep(60 * 26)
 
 
 def on_error(ws, error):
-    print(error)
-    time.sleep(3)
+    print("### Error ###")
+    print(f"Error: {error}")
+    if isinstance(error, Exception):
+        print(f"Exception type: {type(error).__name__}")
+    time.sleep(0.02)
 
 
 def on_close(ws, *args):
@@ -62,12 +65,6 @@ def on_open(ws):
         "Sec-WebSocket-Version": "13",
         "Sec-WebSocket-Key": "xqBt3ImNzJbYqRINxEFlkg==",
     }
-
-    ws.send("\r\n".join([f"{k}: {v}" for k, v in headers.items()]))
-
-    # Add any necessary authentication or handshake steps here
-    # For example, send authentication information to the server if required
-    # ws.send("Authentication data goes here")
 
 
 if __name__ == "__main__":
@@ -92,4 +89,4 @@ if __name__ == "__main__":
 
         except Exception as e:
             print("Network error occurred. Trying to reconnect...")
-            time.sleep(3)
+            time.sleep(0.02)
