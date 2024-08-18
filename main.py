@@ -5,7 +5,7 @@ import websocket
 import time
 import sys
 import os
-from dhooks_lite import Webhook
+from dhooks import Webhook
 
 os.chdir(sys.path[0])
 
