@@ -4,7 +4,7 @@
 ## Pasos para correr el script:
 1. Instalar Python
 2. Instalar dependencias copiando el siguiente comando
-```pip install dhooks-lite websocket-client```
+```pip install dhooks websocket-client```
 3. Correr el script del void con main.py
 ```python3 main.py```
 
