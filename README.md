@@ -14,7 +14,8 @@
  - `role: ID de rol cuando void gana, ej: <@&9298219>`
  - `alert: Es opcional, notifica cuando el void empieza`
  - `logger: Webhook para log de chat es (Opcional, se puede dejar vacio)`
- - Asi tiene que quedar:
+
+Imagen de referencia (Algunos datos son opcionales)::
 ![data](/media/data.png)
 
 ## Ejecutando en distintos entornos
