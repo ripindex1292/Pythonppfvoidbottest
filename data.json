@@ -1,6 +1,8 @@
 [
-  {
-    "url": "WEBHOOK-LINK",
-    "role": "<@&1201147765263187990>"
-  }
+    {
+        "url": "https://discord.com/api/webhooks/Obligatorio",
+        "role": "<@...>",
+        "alert": "Opcional",
+        "logger": "https://discord.com/api/webhooks/Opcional"
+    }
 ]
