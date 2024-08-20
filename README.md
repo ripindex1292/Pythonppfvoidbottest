@@ -5,7 +5,7 @@
 1. Instalar Python
 2. Instalar dependencias copiando el siguiente comando
 ```pip install dhooks websocket-client```
-3. Correr el script del void con main.py
+3. Correr el script del void con el siguiente comando:
 ```python3 main.py```
 
 ## Considerar lo siguiente
@@ -15,6 +15,7 @@
  - `alert: <@&....>` (Opcional) - Cuando el void aparece
  - `logger: https://discord.com/api/webhooks/` (Opcional, se puede dejar vacio)
  - En el código `Logger_en = True` Logea el chat ingles 'en', se puede cambiar el valor a False para desactivar el log
+ - En el código `id_date` muestra las ID y fechas si su valor es `True` y se puede desactivar
  - Las URLs de Webhook en 'URL' y 'Logger' pueden ser las mismas o diferentes
 
 Imagen de referencia (Solo "URL" es obligatorio)::
