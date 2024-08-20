@@ -10,16 +10,18 @@
 
 ## Considerar lo siguiente
 - Introducir datos en `data.json`
- - `URL: (Obligatorio) Link de webhook, ej: https://discord.com/api/webhooks/`
- - `role: ID de rol cuando void gana, ej: <@&9298219>`
- - `alert: Es opcional, notifica cuando el void empieza`
- - `logger: Webhook para log de chat es (Opcional, se puede dejar vacio)`
+ - `URL: https://discord.com/api/webhooks/` (Obligatorio) Link de webhook
+ - `role: <@&.....>` (Opcional) - Cuando el void gana
+ - `alert: <@&....>` (Opcional) - Cuando el void aparece
+ - `logger: https://discord.com/api/webhooks/` (Opcional, se puede dejar vacio)
+ - En el código `Logger_en = True` Logea el chat ingles 'en', se puede cambiar el valor a False para desactivar el log
+ - Las URLs de Webhook en 'URL' y 'Logger' pueden ser las mismas o diferentes
 
-Imagen de referencia (Algunos datos son opcionales)::
+Imagen de referencia (Solo "URL" es obligatorio)::
 ![data](/media/data.png)
 
 ## Ejecutando en distintos entornos
-- En entornos linux solo es necesario seguir los pasos de arriba.
+- En sistemas o entornos linux solo es necesario seguir los pasos de arriba.
 - Es recomendable correr en un entorno Linux, ideal un servidor dedicado o sitio web que permita hostear el servidor
 - Termux (Android) es muy recomendable, corre de fondo donde quiera que vayas, sin necesidad de mantener la PC encendida ni la app abierta
 
