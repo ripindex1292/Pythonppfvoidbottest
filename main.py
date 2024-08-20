@@ -14,6 +14,9 @@ os.chdir(sys.path[0])
 Logger_en = True
 # True = ACTIVADO
 
+# Mostrar ID de usuario y Fecha en Mensajes (True/False)
+id_date = True
+
 def on_message(ws, message):
     global web_hook, count, txt
     if isinstance(message, str):
@@ -25,9 +28,17 @@ def on_message(ws, message):
 # CHAT LOGGER DE ES
             if isinstance(msg[3], int) and msg[3] == 907:
                 print('(:flag_' + str(msg[2]) + ': | ' + str(msg[0]) + ' | ' + 'ID:' + str(msg[4]) + '): ' + str(msg[1]))
-                message_format = '**:flag_' + str(msg[2]) + ': | ' + str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,')
-                current_time = time.strftime("%H:%M:%S", time.localtime())
-                message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
+                if msg[2] == 'xx':
+                    message_format = '**:robot: | '
+                elif msg[2] == 'zz':
+                    message_format = '**:shield: | '
+                else:
+                    message_format = '**:flag_' + str(msg[2]) + ': | '
+
+                message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,')
+                if id_date:
+                    current_time = time.strftime("%H:%M:%S", time.localtime())
+                    message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
                 for i in web_hook:
                     if i[3] is not None:
                         try:
@@ -36,26 +47,20 @@ def on_message(ws, message):
                             print("Webhook de Logger de Chat 'es' inválido o vacío,  mensaje no enviado.")
 
 # CHAT LOGGER EN
-            if msg[3] == 1 and Logger_en == True:
+            if msg[3] == 1 and Logger_en:
                 if msg[2] == 'xx':
-                    message_format = '**:bot: | '
+                    message_format = '**:robot: | '
                 elif msg[2] == 'zz':
                     message_format = '**:shield: | '
                 else:
                     message_format = '**:flag_' + str(msg[2]) + ': | '
 
                 message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,')
-
-                current_time = time.strftime("%H:%M:%S", time.localtime())
-                message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
+                if id_date:
+                    current_time = time.strftime("%H:%M:%S", time.localtime())
+                    message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
                 for i in web_hook:
                     i[0].send(message_format)
-
-# VOID COORDS
-            
-            if 'void' in msg[1].lower() and '#d,' in msg[1]:
-                for i in web_hook:
-                    i[0].send('(:flag_' + str(msg[2]) + ': | ' + str(msg[0]) + ' | ' + 'ID:' + str(msg[4]) + '): ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,'))
 
 # VOID STATUS
 
@@ -66,7 +71,7 @@ def on_message(ws, message):
 
             if msg[2] == 'xx' and 'Celebration time over' in msg[1]:
                 for i in web_hook:
-                    i[0].send('Celebration time over.')
+                    i[0].send('■ Celebration time over.')
 
             if msg[2] == 'xx' and msg[1] == 'Fight starting!':
                 for i in web_hook:
@@ -78,12 +83,12 @@ def on_message(ws, message):
 
             if msg[2] == 'xx' and msg[1] == 'Void seems':
                 for i in web_hook:
-                    i[0].send('Void seems to leave again.')
+                    i[0].send('■ Void seems to leave again.')
 
             if msg[2] == 'xx' and 'Threat couldn\'t be' in msg[1]:
                 print("■ Threat couldn't be contained. Leave the area")
                 for i in web_hook:
-                    i[0].send('Threat couldn\'t be contained.')
+                    i[0].send('■ Threat couldn\'t be contained.')
 
 
 def on_error(ws, error):
