@@ -10,6 +10,10 @@ from dhooks import Webhook
 
 os.chdir(sys.path[0])
 
+# CHAT LOGGER EN (True/False)
+Logger_en = True
+# True = ACTIVADO
+
 def on_message(ws, message):
     global web_hook, count, txt
     if isinstance(message, str):
@@ -29,8 +33,31 @@ def on_message(ws, message):
                         try:
                             i[3].send(message_format)
                         except Exception as e:
-                            print(f"Webhook de Logger de Chat 'es' inválido o vacío,  mensaje no enviado. Logger: {i[3]}")
+                            print("Webhook de Logger de Chat 'es' inválido o vacío,  mensaje no enviado.")
 
+# CHAT LOGGER EN
+            if msg[3] == 1 and Logger_en == True:
+                if msg[2] == 'xx':
+                    message_format = '**:bot: | '
+                elif msg[2] == 'zz':
+                    message_format = '**:shield: | '
+                else:
+                    message_format = '**:flag_' + str(msg[2]) + ': | '
+
+                message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,')
+
+                current_time = time.strftime("%H:%M:%S", time.localtime())
+                message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
+                for i in web_hook:
+                    i[0].send(message_format)
+
+# VOID COORDS
+            
+            if 'void' in msg[1].lower() and '#d,' in msg[1]:
+                for i in web_hook:
+                    i[0].send('(:flag_' + str(msg[2]) + ': | ' + str(msg[0]) + ' | ' + 'ID:' + str(msg[4]) + '): ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,'))
+
+# VOID STATUS
 
             if msg[2] == 'xx' and 'Threat successfully' in msg[1]:
                 print("■ Threat successfully defeated. Good work")
@@ -40,12 +67,6 @@ def on_message(ws, message):
             if msg[2] == 'xx' and 'Celebration time over' in msg[1]:
                 for i in web_hook:
                     i[0].send('Celebration time over.')
-
-# VOID COORDS
-            
-            if 'void' in msg[1].lower() and '#d,' in msg[1]:
-                for i in web_hook:
-                    i[0].send('(:flag_' + str(msg[2]) + ': | ' + str(msg[0]) + ' | ' + 'ID:' + str(msg[4]) + '): ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,'))
 
             if msg[2] == 'xx' and msg[1] == 'Fight starting!':
                 for i in web_hook:
@@ -75,7 +96,7 @@ def on_error(ws, error):
 
 def on_close(ws, *args):
             print("### closed ###")
-            update_webhook()  # Update webhook on close
+            update_webhook()
 
 
 def on_open(ws):
