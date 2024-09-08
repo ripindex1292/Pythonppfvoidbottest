@@ -35,7 +35,7 @@ def on_message(ws, message):
                 else:
                     message_format = '**:flag_' + str(msg[2]) + ': | '
 
-                message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,')
+                message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,').replace('@', '@ ')
                 if id_date:
                     current_time = time.strftime("%H:%M:%S", time.localtime())
                     message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
@@ -55,7 +55,7 @@ def on_message(ws, message):
                 else:
                     message_format = '**:flag_' + str(msg[2]) + ': | '
 
-                message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,')
+                message_format += str(msg[0]) + '**: ' + msg[1].replace('#d,', 'https://pixelplanet.fun/#d,').replace('@', '@ ')
                 if id_date:
                     current_time = time.strftime("%H:%M:%S", time.localtime())
                     message_format += f'\n`ID: {str(msg[4])} | {current_time}`'
